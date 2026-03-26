@@ -12,7 +12,7 @@ export class InventoryPage {
     this.page.locator(
       `//div[@data-test="inventory-item-name" and text()="${productName}"]
        /ancestor::div[@class="inventory_item"]
-       //button`
+       //button[text()='Add to cart']`
     );
 
   async getTitle(): Promise<string> {
@@ -24,10 +24,21 @@ export class InventoryPage {
   }
 
   async getCartBadgeCount(): Promise<string> {
-    return (await this.cartBadge().textContent())?.trim() ?? "0";
+    const badge = this.cartBadge();
+
+    if (await badge.isVisible().catch(() => false)) {
+      return (await badge.textContent())?.trim() ?? "0";
+    }
+    return "0";
   }
 
   async goToCart(): Promise<void> {
     await this.cartLink().click();
+  }
+
+  async removeProduct(productName: string) {
+    await this.page.locator(
+      `//div[text()="${productName}"]/ancestor::div[@class="inventory_item"]//button[text()='Remove']`
+    ).click();
   }
 }

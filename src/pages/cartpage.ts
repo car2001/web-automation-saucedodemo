@@ -25,4 +25,10 @@ export class CartPage {
   async getProductQuantity(productName: string): Promise<string> {
     return (await this.productQuantityLocator(productName).textContent())?.trim() ?? "";
   }
+
+    async removeProduct(productName: string) {
+    await this.page.locator(
+      `//div[text()="${productName}"]/ancestor::div[@class="cart_item"]//button`
+    ).click();
+  }
 }

@@ -2,10 +2,38 @@ import { Given, When, Then } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 import { CustomWorld } from "../core/world";
 
+Given(
+  "que el usuario agregó el producto {string} al carrito",
+  async function (this: CustomWorld, productName: string) {
+    await this.inventoryPage.addProductToCart(productName);
+  }
+);
+
 When(
   "el usuario agrega el producto {string} al carrito",
   async function (this: CustomWorld, productName: string) {
     await this.inventoryPage.addProductToCart(productName);
+  }
+);
+
+When(
+  "el usuario navega al carrito de compras",
+  async function (this: CustomWorld) {
+    await this.inventoryPage.goToCart();
+  }
+);
+
+When(
+  "el usuario remueve el producto {string} del carrito desde la página de productos",
+  async function (this: CustomWorld, productName: string) {
+    await this.inventoryPage.removeProduct(productName);
+  }
+);
+
+When(
+  "el usuario remueve el producto {string} desde el carrito",
+  async function (this: CustomWorld, productName: string) {
+    await this.cartPage.removeProduct(productName);
   }
 );
 
@@ -17,17 +45,19 @@ Then(
   }
 );
 
-Given(
-  "que el usuario agregó el producto {string} al carrito",
-  async function (this: CustomWorld, productName: string) {
-    await this.inventoryPage.addProductToCart(productName);
+Then(
+  "no debería visualizar el producto {string} en el carrito",
+  async function (this: CustomWorld,productName: string) {
+    const isVisible = await this.cartPage.isProductVisible(productName);
+    expect(isVisible).toBeFalsy();
   }
 );
 
-When(
-  "el usuario navega al carrito de compras",
-  async function (this: CustomWorld) {
-    await this.inventoryPage.goToCart();
+Then(
+  "el ícono del carrito no debería mostrar cantidad",
+  async function () {
+    const count = await this.inventoryPage.getCartBadgeCount();
+    expect(count).toBe("0");
   }
 );
 
