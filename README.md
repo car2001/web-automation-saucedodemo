@@ -25,7 +25,7 @@ Validar los flujos principales del usuario dentro de la plataforma:
 
 1.  **Clonar el repositorio:**
     ```bash
-    git clone <TU_REPO_URL>
+    git clone https://github.com/car2001/web-automation-saucedodemo
     cd web-automation-saucedemo
     ```
 
@@ -46,3 +46,12 @@ Validar los flujos principales del usuario dentro de la plataforma:
 ### 🔹 Ejecutar todas las pruebas
 ```bash
 npm test
+```
+
+### 🔹 Ejecutar pruebas por tag
+```bash
+npx cucumber-js --tags "@login"
+```
+
+## 🏁 Autor
+## Carlos Alberto Pingo Aguilar
