@@ -1,41 +1,48 @@
-🧪 Automatización Web – Sauce Demo (Playwright + Cucumber)
-📌 Descripción
+# 🧪 Automatización Web – Sauce Demo (Playwright + Cucumber)
 
-Este proyecto contiene una suite de pruebas automatizadas para la aplicación web Sauce Demo utilizando:
+## 📌 Descripción
 
-Playwright
-Cucumber
-TypeScript
-Patrón de diseño Page Object Model (POM)
-🎯 Objetivo
+Este proyecto contiene una suite de pruebas automatizadas para la aplicación web **Sauce Demo** utilizando las siguientes tecnologías:
 
-Validar el flujo principal de usuario:
+* **Playwright** (Motor de automatización)
+* **Cucumber** (Framework BDD)
+* **TypeScript** (Lenguaje de programación)
+* **Page Object Model (POM)** (Patrón de diseño)
 
-Login exitoso e inválido
-Agregar productos al carrito
-Visualizar carrito
-Completar proceso de compra
+---
 
-🚀 Instalación
+## 🎯 Objetivo
 
-Clonar el repositorio:
+Validar los flujos principales del usuario dentro de la plataforma:
 
-git clone 
-cd web-automation-saucedemo
+* **Login:** Validación de accesos exitosos e inválidos.
+* **Carrito:** Agregar productos y visualizar el listado.
+* **Checkout:** Completar el proceso de compra de principio a fin.
 
-Instalar dependencias:
+---
 
-npm install
+## 🚀 Instalación
 
-Instalar navegadores de Playwright:
+1.  **Clonar el repositorio:**
+    ```bash
+    git clone <TU_REPO_URL>
+    cd web-automation-saucedemo
+    ```
 
-npx playwright install
-▶️ Ejecución de pruebas
-🔹 Ejecutar todas las pruebas
+2.  **Instalar dependencias:**
+    ```bash
+    npm install
+    ```
+
+3.  **Instalar navegadores de Playwright:**
+    ```bash
+    npx playwright install
+    ```
+
+---
+
+## ▶️ Ejecución de pruebas
+
+### 🔹 Ejecutar todas las pruebas
+```bash
 npm test
-🔹 Ejecutar pruebas por tag
-npx cucumber-js --tags "@login"
-
-🏁 Autor
-
-Carlos Alberto Pingo Aguilar
